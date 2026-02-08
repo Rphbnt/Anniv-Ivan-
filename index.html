@@ -67,8 +67,23 @@ button:hover {
     box-shadow: 0 0 25px rgba(255,107,107,0.6);
 }
 
+/* 💥 IVAN WOW */
+.name-wow {
+    margin-top: 40px;
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 6px;
+    display: none;
+    color: #fff;
+    text-shadow:
+        0 0 10px #ff6b6b,
+        0 0 30px #ff6b6b,
+        0 0 60px #6b8cff;
+    animation: pop 0.6s ease, glow 2s infinite alternate;
+}
+
 .message {
-    margin-top: 30px;
+    margin-top: 25px;
     font-size: 1.05rem;
     display: none;
     line-height: 1.7;
@@ -94,6 +109,26 @@ button:hover {
         opacity: 0;
     }
 }
+
+@keyframes pop {
+    0% { transform: scale(0.3); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 10px #ff6b6b,
+            0 0 30px #ff6b6b,
+            0 0 60px #6b8cff;
+    }
+    to {
+        text-shadow:
+            0 0 20px #ffcc70,
+            0 0 50px #ff6b6b,
+            0 0 90px #6b8cff;
+    }
+}
 </style>
 </head>
 
@@ -110,6 +145,8 @@ button:hover {
 
     <button onclick="surprise()">Clique pour ta surprise 🎁</button>
 
+    <div class="name-wow" id="ivan">IVAN</div>
+
     <div class="message" id="msg">
         💥 Ivan, t’es un frère.<br>
         Merci pour toutes les barres de rire,<br>
@@ -121,8 +158,9 @@ button:hover {
 <script>
 function surprise() {
     document.getElementById("msg").style.display = "block";
+    document.getElementById("ivan").style.display = "block";
 
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 160; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
         document.body.appendChild(confetti);
