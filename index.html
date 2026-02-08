@@ -5,206 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joyeux Anniversaire Ivan 🎉</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #050510, #0b0b2a);
-  color: white;
-  overflow-x: hidden;
+    background: radial-gradient(circle at top, #1a1a40, #000);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* FEU D’ARTIFICE EN FOND */
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+.container {
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
 }
 
-/* HERO */
-.hero {
-  min-height: 100vh;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-/* PRENOM */
-.name {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.5rem, 14vw, 6rem);
-  letter-spacing: 0.15em;
-  margin-bottom: 20px;
-  color: rgba(255,255,255,0.9);
-  text-shadow: 0 10px 40px rgba(255,204,112,0.3);
-}
-
-/* TITRE */
 h1 {
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
-  margin-bottom: 14px;
-  background: linear-gradient(90deg, #ffcc70, #ff6b6b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffcc70, #ff6b6b, #6b8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
 }
 
-/* TEXTE INTRO */
-.hero p {
-  max-width: 520px;
-  font-size: 1.1rem;
-  opacity: 0.95;
-  line-height: 1.7;
+p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 25px;
 }
 
-/* BOUTON */
 button {
-  margin-top: 40px;
-  padding: 16px 44px;
-  border-radius: 999px;
-  border: none;
-  font-size: 1.05rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: linear-gradient(135deg, #ffcc70, #ff6b6b);
-  color: #000;
-  box-shadow: 0 20px 50px rgba(255,107,107,0.4);
+    padding: 15px 38px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ffcc70, #ff6b6b);
+    color: #000;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* INDICATEUR SCROLL */
-.scroll {
-  margin-top: 50px;
-  font-size: 0.9rem;
-  opacity: 0.6;
+button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 25px rgba(255,107,107,0.6);
 }
 
-/* SECTION MESSAGE */
-.section {
-  padding: 80px 20px 120px;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
+.message {
+    margin-top: 30px;
+    font-size: 1.05rem;
+    display: none;
+    line-height: 1.7;
 }
 
-.card {
-  background: rgba(255,255,255,0.07);
-  backdrop-filter: blur(14px);
-  border-radius: 26px;
-  padding: 40px 26px;
-  max-width: 520px;
-  text-align: center;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: fall linear forwards;
 }
 
-.card p {
-  font-size: 1.15rem;
-  line-height: 1.7;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <div class="name">IVAN</div>
+<div class="container">
+    <h1>🎉 Joyeux Anniversaire Ivan 🎉</h1>
 
-  <h1>🎉 Joyeux Anniversaire Ivan 🎉</h1>
-
-  <p>
-    Aujourd’hui c’est <strong>TON</strong> jour 🥳<br>
-    Un an de plus, encore plus de souvenirs,<br>
-    et toujours le même crack ❤️
-  </p>
-
-  <button onclick="launch()">Clique pour ta surprise 🎁</button>
-  <div class="scroll">↓ Fais glisser ↓</div>
-</div>
-
-<div class="section">
-  <div class="card">
     <p>
-      💥 Ivan, t’es un frère.<br>
-      Merci pour toutes les barres de rire,<br>
-      les délires et les moments inoubliables.<br><br>
-      Passe une année incroyable 🚀
+        Aujourd’hui c’est <strong>TON</strong> jour 🥳<br>
+        Un an de plus, encore plus de souvenirs,<br>
+        et toujours le même crack ❤️
     </p>
-  </div>
+
+    <button onclick="surprise()">Clique pour ta surprise 🎁</button>
+
+    <div class="message" id="msg">
+        💥 Ivan, t’es un frère.<br>
+        Merci pour toutes les barres de rire,<br>
+        les délires et les moments inoubliables.<br>
+        Passe une année incroyable 🚀
+    </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script>
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 1000);
-camera.position.z = 50;
+function surprise() {
+    document.getElementById("msg").style.display = "block";
 
-let renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(innerWidth, innerHeight);
-renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-document.body.appendChild(renderer.domElement);
+    for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        document.body.appendChild(confetti);
 
-let fireworks = [];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
 
-function firework() {
-  const count = 200;
-  const geo = new THREE.BufferGeometry();
-  const pos = [];
-  const vel = [];
-  const col = [];
-  const c = new THREE.Color(`hsl(${Math.random()*360},100%,60%)`);
-
-  for (let i=0;i<count;i++){
-    pos.push(0,0,0);
-    vel.push(
-      (Math.random()-0.5)*15,
-      (Math.random()-0.5)*15,
-      (Math.random()-0.5)*15
-    );
-    col.push(c.r,c.g,c.b);
-  }
-
-  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
-  geo.setAttribute('color', new THREE.Float32BufferAttribute(col,3));
-
-  const mat = new THREE.PointsMaterial({ size: 0.9, vertexColors:true });
-  const pts = new THREE.Points(geo,mat);
-  pts.userData={vel,life:80};
-  scene.add(pts);
-  fireworks.push(pts);
-}
-
-function animate(){
-  requestAnimationFrame(animate);
-  fireworks.forEach((f,i)=>{
-    let p=f.geometry.attributes.position.array;
-    f.userData.vel.forEach((v,j)=>{
-      p[j*3]+=v*0.08;
-      p[j*3+1]+=v*0.08;
-      p[j*3+2]+=v*0.08;
-    });
-    f.geometry.attributes.position.needsUpdate=true;
-    if(--f.userData.life<=0){
-      scene.remove(f);
-      fireworks.splice(i,1);
+        setTimeout(() => confetti.remove(), 4000);
     }
-  });
-  renderer.render(scene,camera);
-}
-animate();
-
-function launch(){
-  for(let i=0;i<3;i++) firework();
 }
 </script>
 
